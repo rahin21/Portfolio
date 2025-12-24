@@ -34,12 +34,17 @@ const techIcons: { [key: string]: any } = {
   "MySQL": SiMysql,
   "Supabase": SiSupabase,
   "Github": SiGithub,
+  "C": SiCplusplus, // Fallback for C
 };
 
 // Optimized Tech Badge Component
 const TechBadge = memo(({ skill, index }: { skill: string, index: number }) => {
     // Try to find an icon, fallback to a generic code block look if not found
-    const Icon = techIcons[skill] || techIcons[Object.keys(techIcons).find(k => skill.includes(k) || k.includes(skill)) || ""] ;
+    const iconKey = Object.keys(techIcons).find(k => 
+        skill.toLowerCase() === k.toLowerCase() || 
+        (k.length > 2 && skill.toLowerCase().includes(k.toLowerCase())) // Avoid short matches like "C" matching in other words unless exact
+    );
+    const Icon = techIcons[skill] || (iconKey ? techIcons[iconKey] : null);
     
     if (!Icon) return null;
 
@@ -124,7 +129,7 @@ export default function Home() {
                 </span>
               </div>
               
-              <h1 className="text-[12vw] lg:text-[7rem] leading-[0.85] font-black uppercase tracking-tighter text-[#4ade80] mb-8 break-words">
+              <h1 className="text-[12vw] lg:text-[7rem] leading-[0.85] font-black tracking-normal text-[#4ade80] mb-8 break-words">
                 {personalInfo.name.split(' ').map((word, i) => (
                   <span key={i} className="block">{word}</span>
                 ))}
