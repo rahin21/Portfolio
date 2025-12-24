@@ -94,13 +94,13 @@ export const resumeData = {
   ],
   projects: {
     personal: [
+			{ name: "Chrono Stride AR", url: "chrono-stride-ar.vercel.app", stack: "React, WebAR.Rocks & Ant Design." },
+			{ name: "Booking System", url: "booking-system-pearl-beta.vercel.app", stack: "ShadCN UI, Next.JS, Cloudinary & PostgreSQL it has an admin panel" },
+			{ name: "Issue Tracker", url: "issue-tracker-seven-omega.vercel.app", stack: "Shadcn/ui, NextJs, Prisma & MongoDB" },
+      { name: "Ambiance", url: "ambiance-sigma.vercel.app", stack: "TailwindCSS, React.js, Next.Js & It has an admin panel from where the frontend can be edited" },
       { name: "E-Shoes", url: "eshoes-kohl.vercel.app", stack: "Bootstrap, EJS, Node.js & Express.js" },
       { name: "Contact App", url: "contact-app-theta-sooty.vercel.app", stack: "React, TailwindCSS, FireBase" },
       { name: "Food Network", url: "food-network-iota.vercel.app", stack: "React, TailwindCSS, NextJs & Shadcn/ui" },
-      { name: "Issue Tracker", url: "issue-tracker-seven-omega.vercel.app", stack: "Shadcn/ui, NextJs, Prisma & MongoDB" },
-      { name: "Ambiance", url: "ambiance-sigma.vercel.app", stack: "TailwindCSS, React.js, Next.Js & It has an admin panel from where the frontend can be edited" },
-      { name: "Booking System", url: "booking-system-pearl-beta.vercel.app", stack: "ShadCN UI, Next.JS, Cloudinary & PostgreSQL it has an admin panel" },
-      { name: "Chrono Stride AR", url: "chrono-stride-ar.vercel.app", stack: "React, WebAR.Rocks & Ant Design." }
     ],
     contribution: [
       { name: "Ascend-AI", url: "ascendai.site", stack: "Next.js, TypeScript, Shadcn/ui, Framer-motion" },

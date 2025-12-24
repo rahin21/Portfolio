@@ -357,21 +357,16 @@ export default function Home() {
       </section>
 
       {/* Projects Showcase Section */}
-      <section id="projects" className="py-24 px-4 sm:px-8 md:px-16 lg:px-24 bg-[#0d0d0d] relative">
-         <div className="max-w-7xl mx-auto">
+      <section id="projects" className="py-20 bg-[#0d0d0d] relative border-t border-white/5">
+         <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 lg:px-24">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="mb-16 flex flex-col md:flex-row justify-between items-end gap-6"
+                className="text-center mb-16"
             >
-                <div>
-                    <p className="text-[#4ade80] text-sm font-mono mb-2">&lt;/Explore Work&gt;</p>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-none">
-                        A Showcase of My <br/> Latest Projects
-                    </h2>
-                </div>
-                <div className="w-full md:w-auto h-[1px] bg-white/10 flex-grow mx-8 hidden md:block" />
+                 <p className="text-[#4ade80] text-sm font-mono mb-2">&lt;/Explore Work&gt;</p>
+                 <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight">Projects Showcase</h2>
             </motion.div>
 
             <div className="grid md:grid-cols-2 gap-8">
