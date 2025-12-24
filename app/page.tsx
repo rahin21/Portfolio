@@ -1,12 +1,12 @@
 "use client";
 
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { resumeData } from "@/data/resume";
-import { ArrowUpRight, Github, Linkedin, Facebook, Mail, Menu, Globe } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Facebook, Mail, Menu, Globe, X } from "lucide-react";
 import Typewriter from "typewriter-effect";
 import { 
   SiReact, SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript, 
@@ -67,6 +67,7 @@ TechBadge.displayName = "TechBadge";
 
 export default function Home() {
   const { personalInfo, projects, experience } = resumeData;
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Combine projects for the showcase
   const allProjects = [...projects.contribution, ...projects.personal].slice(0, 4); // Show top 4
@@ -81,20 +82,86 @@ export default function Home() {
     <div className="min-h-screen bg-[#0d0d0d] text-white font-sans selection:bg-[#4ade80] selection:text-black">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-center mix-blend-difference">
-        <div className="text-sm font-bold tracking-widest uppercase">
+        <div className="text-sm font-bold tracking-widest uppercase w-40">
           {personalInfo.name.split(' ')[0]} {personalInfo.name.split(' ')[1]}
         </div>
+        
+        {/* Right Side: Resume (Desktop) & Hamburger (Mobile) */}
         <div className="flex items-center gap-4">
-            <Link href="/resume">
-                <Button className="rounded-full bg-white text-black hover:bg-gray-200 transition-colors hidden sm:flex font-bold">
+            <Link href="/resume" className="hidden sm:block">
+                <Button className="rounded-full bg-white text-black hover:bg-gray-200 transition-colors font-bold">
                     Resume
                 </Button>
             </Link>
-            <Button size="icon" variant="ghost" className="rounded-full bg-white text-black hover:bg-gray-200">
-            <Menu size={20} />
+
+            {/* Hamburger Menu (Visible on all screens) */}
+            <Button 
+                size="icon" 
+                variant="ghost" 
+                className="rounded-full bg-white text-black hover:bg-gray-200"
+                onClick={() => setIsMobileMenuOpen(true)}
+            >
+                <Menu size={20} />
             </Button>
         </div>
       </nav>
+
+      {/* Mobile Menu Drawer */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+            <>
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60]"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                />
+                <motion.div 
+                    initial={{ x: "100%" }}
+                    animate={{ x: 0 }}
+                    exit={{ x: "100%" }}
+                    transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                    className="fixed right-0 top-0 bottom-0 w-3/4 max-w-sm bg-[#111] border-l border-white/10 z-[70] p-8 flex flex-col"
+                >
+                    <div className="flex justify-end mb-12">
+                        <Button 
+                            size="icon" 
+                            variant="ghost" 
+                            className="rounded-full text-white hover:bg-white/10"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            <X size={24} />
+                        </Button>
+                    </div>
+
+                    <div className="flex flex-col gap-8 text-lg font-medium">
+                        <Link href="#tech-stack" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[#4ade80] transition-colors">Tech Stack</Link>
+                        <Link href="#experience" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[#4ade80] transition-colors">Experience</Link>
+                        <Link href="#projects" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[#4ade80] transition-colors">Projects</Link>
+                        <Link href="/resume" onClick={() => setIsMobileMenuOpen(false)} className="text-[#4ade80] hover:text-white transition-colors">View Resume</Link>
+                    </div>
+
+                    <div className="mt-auto">
+                        <p className="text-xs text-gray-600 uppercase tracking-widest mb-4">Connect</p>
+                        <div className="flex gap-4">
+                            {personalInfo.socials.map((social) => {
+                                let Icon = Globe;
+                                if (social.name.toLowerCase().includes("github")) Icon = Github;
+                                if (social.name.toLowerCase().includes("linkedin")) Icon = Linkedin;
+                                if (social.name.toLowerCase().includes("facebook")) Icon = Facebook;
+                                return (
+                                    <a key={social.name} href={`https://${social.url}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#4ade80] transition-colors">
+                                        <Icon size={24} />
+                                    </a>
+                                )
+                            })}
+                        </div>
+                    </div>
+                </motion.div>
+            </>
+        )}
+      </AnimatePresence>
 
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center px-4 sm:px-8 md:px-16 lg:px-24 pt-20 relative overflow-hidden">
@@ -197,7 +264,7 @@ export default function Home() {
       </section>
 
       {/* Tech Stack Section */}
-      <section className="py-20 bg-[#0d0d0d] relative border-t border-white/5">
+      <section id="tech-stack" className="py-20 bg-[#0d0d0d] relative border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 lg:px-24">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -218,7 +285,7 @@ export default function Home() {
       </section>
 
       {/* Experience Section */}
-      <section className="py-20 bg-[#0d0d0d] relative border-t border-white/5">
+      <section id="experience" className="py-20 bg-[#0d0d0d] relative border-t border-white/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-8">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -287,7 +354,7 @@ export default function Home() {
       </section>
 
       {/* Projects Showcase Section */}
-      <section className="py-24 px-4 sm:px-8 md:px-16 lg:px-24 bg-[#0d0d0d] relative">
+      <section id="projects" className="py-24 px-4 sm:px-8 md:px-16 lg:px-24 bg-[#0d0d0d] relative">
          <div className="max-w-7xl mx-auto">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
