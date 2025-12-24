@@ -66,7 +66,7 @@ const TechBadge = memo(({ skill, index }: { skill: string, index: number }) => {
 TechBadge.displayName = "TechBadge";
 
 export default function Home() {
-  const { personalInfo, projects } = resumeData;
+  const { personalInfo, projects, experience } = resumeData;
 
   // Combine projects for the showcase
   const allProjects = [...projects.contribution, ...projects.personal].slice(0, 4); // Show top 4
@@ -212,6 +212,75 @@ export default function Home() {
             <div className="flex flex-wrap justify-center gap-8 md:gap-12">
                 {allSkills.map((skill, index) => (
                     <TechBadge key={skill} skill={skill} index={index} />
+                ))}
+            </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section className="py-20 bg-[#0d0d0d] relative border-t border-white/5">
+        <div className="max-w-4xl mx-auto px-4 sm:px-8">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center mb-16"
+            >
+                 <p className="text-[#4ade80] text-sm font-mono mb-2">&lt;Career Path /&gt;</p>
+                 <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight">Experience</h2>
+            </motion.div>
+
+            <div className="space-y-12 relative">
+                {/* Vertical Line */}
+                <div className="absolute left-[19px] top-2 bottom-2 w-[2px] bg-white/10 hidden md:block"></div>
+
+                {experience.map((job, index) => (
+                    <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
+                        className="relative pl-0 md:pl-16 group"
+                    >
+                        {/* Dot on Line */}
+                        <div className="absolute left-[14px] top-2 w-3 h-3 bg-[#4ade80] rounded-full z-10 hidden md:block shadow-[0_0_10px_#4ade80] group-hover:scale-125 transition-transform duration-300"></div>
+
+                        <div className="bg-[#1a1a1a] p-8 rounded-2xl border border-white/10 group-hover:border-[#4ade80]/50 transition-colors duration-300 relative overflow-hidden">
+                            {/* Hover Glow */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#4ade80]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
+                                <div>
+                                    <h3 className="text-xl font-bold text-white">{job.title}</h3>
+                                    {job.company && <p className="text-[#4ade80] font-mono text-sm">{job.company}</p>}
+                                </div>
+                                <span className="text-xs font-mono text-gray-500 border border-white/10 px-3 py-1 rounded-full bg-black/30">
+                                    {job.duration}
+                                </span>
+                            </div>
+                            
+                            {job.description && (
+                                <p className="text-gray-400 text-sm leading-relaxed mb-4">{job.description}</p>
+                            )}
+
+                            {job.points && (
+                                <ul className="space-y-2">
+                                    {job.points.map((point, i) => (
+                                        <li key={i} className="text-gray-400 text-sm flex items-start gap-2">
+                                            <span className="text-[#4ade80] mt-1">▹</span>
+                                            <span dangerouslySetInnerHTML={{ 
+                                                __html: point.replace(
+                                                    /(React\.js|Next\.js|TypeScript|Electron\.js|Firebase|Node\.js|Express\.js|PostgreSQL|MongoDB|TailwindCSS)/g, 
+                                                    '<span class="text-white font-semibold">$1</span>'
+                                                ) 
+                                            }} />
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
+                    </motion.div>
                 ))}
             </div>
         </div>

@@ -37,7 +37,7 @@ export const resumeData = {
     {
       title: "Junior Software Engineer",
       company: "Ascend AI, Remote",
-      duration: "2024.01.25 - Current",
+      duration: "Currently Working",
       points: [
         "Post: Junior Software Engineer.",
         "Technologies: React Native, Electron.js, Next.js, Drizzle, PostgreSQL, Firebase, MongoDB, TailwindCSS, Shadcn/ui.",
