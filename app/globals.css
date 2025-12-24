@@ -113,6 +113,9 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  
+  /* Custom Neon Green for Portfolio */
+  --neon-green: oklch(0.85 0.2 150); /* Approximate bright green */
 }
 
 @layer base {
@@ -121,5 +124,18 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Custom utilities */
+@utility text-neon-green {
+  color: var(--neon-green);
+}
+@utility bg-neon-green {
+  background-color: var(--neon-green);
+}
+@utility hover-bg-neon-green-dark {
+  &:hover {
+    background-color: oklch(0.75 0.2 150);
   }
 }
