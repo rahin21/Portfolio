@@ -11,7 +11,8 @@ import Typewriter from "typewriter-effect";
 import { 
   SiReact, SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript, 
   SiNodedotjs, SiExpress, SiMongodb, SiPostgresql, SiFirebase, 
-  SiElectron, SiPython, SiCplusplus, SiHtml5, SiCss3, SiMysql, SiSupabase, SiGithub 
+  SiElectron, SiPython, SiCplusplus, SiHtml5, SiCss3, SiMysql, SiSupabase, SiGithub, 
+  SiC
 } from "react-icons/si";
 
 // Mapping tech names to icons
@@ -34,7 +35,7 @@ const techIcons: { [key: string]: any } = {
   "MySQL": SiMysql,
   "Supabase": SiSupabase,
   "Github": SiGithub,
-  "C": SiCplusplus, // Fallback for C
+  "C": SiC, // Fallback for C
 };
 
 // Optimized Tech Badge Component
@@ -82,8 +83,10 @@ export default function Home() {
     <div className="min-h-screen bg-[#0d0d0d] text-white font-sans selection:bg-[#4ade80] selection:text-black">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-center mix-blend-difference">
-        <div className="text-sm font-bold tracking-widest uppercase w-40">
-          {personalInfo.name.split(' ')[0]} {personalInfo.name.split(' ')[1]}
+        <div className="w-40">
+            <Link href="/">
+                <Image src="/logo.png" alt="Logo" width={50} height={50} className="object-contain rounded-lg" />
+            </Link>
         </div>
         
         {/* Right Side: Resume (Desktop) & Hamburger (Mobile) */}

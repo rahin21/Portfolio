@@ -1,5 +1,10 @@
 import { MainContent } from "@/components/MainContent";
 import { Sidebar } from "@/components/Sidebar";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Resume",
+};
 
 export default function ResumePage() {
   return (
