@@ -1,8 +1,5 @@
 import { resumeData } from "@/data/resume";
-import { Mail, Phone, MapPin, Github, Linkedin, Facebook } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
-import { Separator } from "./ui/separator";
 
 export function Sidebar() {
   const { personalInfo } = resumeData;

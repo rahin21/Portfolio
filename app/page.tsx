@@ -181,7 +181,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <div className="text-lg md:text-xl mb-4 font-medium flex items-center gap-2 h-8">
-                Hey <span className="text-2xl">👋</span>, I'm a 
+                Hey <span className="text-2xl">👋</span>, {`I'm`} a 
                 <span className="text-[#4ade80] inline-block">
                   <Typewriter
                     options={{

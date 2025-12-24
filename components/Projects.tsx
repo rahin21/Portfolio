@@ -2,7 +2,6 @@
 
 import { resumeData } from "@/data/resume";
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 export function Projects() {
   const { projects } = resumeData;
