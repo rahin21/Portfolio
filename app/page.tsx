@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { resumeData } from "@/data/resume";
-import { ArrowUpRight, Github, Linkedin, Facebook, Mail, Menu, Globe, X } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Facebook, Mail, Menu, Globe, X, Send } from "lucide-react";
 import Typewriter from "typewriter-effect";
 import { 
   SiReact, SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript, 
@@ -142,6 +142,7 @@ export default function Home() {
                         <Link href="#tech-stack" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[#4ade80] transition-colors">Tech Stack</Link>
                         <Link href="#experience" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[#4ade80] transition-colors">Experience</Link>
                         <Link href="#projects" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[#4ade80] transition-colors">Projects</Link>
+                        <Link href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[#4ade80] transition-colors">Contact</Link>
                         <Link href="/resume" onClick={() => setIsMobileMenuOpen(false)} className="text-[#4ade80] hover:text-white transition-colors">View Resume</Link>
                     </div>
 
@@ -423,6 +424,78 @@ export default function Home() {
                  </Link>
             </div>
          </div>
+      </section>
+      
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-[#0d0d0d] relative border-t border-white/5">
+        <div className="max-w-4xl mx-auto px-4 sm:px-8">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center mb-16"
+            >
+                 <p className="text-[#4ade80] text-sm font-mono mb-2">&lt;Get In Touch /&gt;</p>
+                 <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight">Contact Me</h2>
+            </motion.div>
+
+            <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="bg-[#1a1a1a] p-8 md:p-12 rounded-2xl border border-white/10 relative overflow-hidden"
+            >
+                 {/* Background Glow */}
+                 <div className="absolute top-0 right-0 w-64 h-64 bg-[#4ade80]/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2" />
+
+                 <form className="space-y-6 relative z-10">
+                    <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                            <label htmlFor="name" className="text-sm font-mono text-gray-400">Name</label>
+                            <input 
+                                type="text" 
+                                id="name"
+                                className="w-full bg-[#0d0d0d] border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#4ade80] focus:ring-1 focus:ring-[#4ade80] transition-all"
+                                placeholder="John Doe"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <label htmlFor="email" className="text-sm font-mono text-gray-400">Email</label>
+                            <input 
+                                type="email" 
+                                id="email"
+                                className="w-full bg-[#0d0d0d] border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#4ade80] focus:ring-1 focus:ring-[#4ade80] transition-all"
+                                placeholder="john@example.com"
+                            />
+                        </div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                        <label htmlFor="contact" className="text-sm font-mono text-gray-400">Contact Info (Optional)</label>
+                        <input 
+                            type="text" 
+                            id="contact"
+                            className="w-full bg-[#0d0d0d] border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#4ade80] focus:ring-1 focus:ring-[#4ade80] transition-all"
+                            placeholder="Phone number or other contact method"
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <label htmlFor="message" className="text-sm font-mono text-gray-400">Message</label>
+                        <textarea 
+                            id="message"
+                            rows={5}
+                            className="w-full bg-[#0d0d0d] border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#4ade80] focus:ring-1 focus:ring-[#4ade80] transition-all resize-none"
+                            placeholder="Your message here..."
+                        />
+                    </div>
+
+                    <Button className="w-full bg-[#4ade80] text-black hover:bg-[#3ec46d] font-bold py-6 text-lg rounded-xl transition-all hover:scale-[1.02]">
+                        Send Message <Send size={20} className="ml-2" />
+                    </Button>
+                 </form>
+            </motion.div>
+        </div>
       </section>
       
       {/* Footer */}
