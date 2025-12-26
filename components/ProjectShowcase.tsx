@@ -34,7 +34,7 @@ const ProjectCard = ({ project, className = "" }: { project: Project; className?
 
         const interval = setInterval(() => {
             setCurrentImageIndex((prev) => (prev + 1) % images.length);
-        }, 3000); // Change every 3 seconds
+        }, 5000); // Change every 5 seconds
 
         return () => clearInterval(interval);
     }, [hasMultipleImages, isHovered, images.length]);
@@ -261,23 +261,21 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
                         <span className="w-2 h-8 bg-[#4ade80] rounded-full inline-block"></span>
                         Featured Projects
                     </h3>
-                    <div className="flex gap-2">
-                        <Button 
-                            size="icon" 
-                            variant="outline" 
+                    <div className="flex gap-2 relative z-20">
+                        <button 
                             onClick={prevSlide}
-                            className="rounded-full bg-white text-black border-white hover:bg-gray-200 transition-colors"
+                            className="w-10 h-10 rounded-full bg-white text-black border border-white hover:bg-gray-200 flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-[#4ade80]"
+                            aria-label="Previous Projects"
                         >
                             <ChevronLeft size={20} />
-                        </Button>
-                        <Button 
-                            size="icon" 
-                            variant="outline" 
+                        </button>
+                        <button 
                             onClick={nextSlide}
-                            className="rounded-full bg-white text-black border-white hover:bg-gray-200 transition-colors"
+                            className="w-10 h-10 rounded-full bg-white text-black border border-white hover:bg-gray-200 flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-[#4ade80]"
+                            aria-label="Next Projects"
                         >
                             <ChevronRight size={20} />
-                        </Button>
+                        </button>
                     </div>
                 </div>
 

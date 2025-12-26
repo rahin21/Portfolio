@@ -123,6 +123,19 @@ export const resumeData = {
           "/booking-system/Screenshot 5.png"
         ]
       },
+      { 
+        name: "Contact App", 
+        url: "contact-app-theta-sooty.vercel.app", 
+        stack: "React, TailwindCSS, FireBase",
+        description: "A modern contact management application with cloud synchronization. Features instant search, categorization, and secure data storage.",
+        images: [
+          "/contact-app/Screenshot 1.png",
+          "/contact-app/Screenshot 2.png",
+          "/contact-app/Screenshot 3.png",
+          "/contact-app/Screenshot 4.png"
+        ],
+        youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      },
 			{ 
         name: "Issue Tracker", 
         url: "issue-tracker-seven-omega.vercel.app", 
@@ -141,6 +154,17 @@ export const resumeData = {
         url: "ambiance-sigma.vercel.app", 
         stack: "TailwindCSS, React.js, Next.Js, With Admin Panel",
         description: "A mood-enhancing application with curated soundscapes and visual themes. Includes an admin dashboard for content management.",
+        images: [
+          "/ambiance/Screenshot 1.png",
+          "/ambiance/Screenshot 2.png",
+          "/ambiance/Screenshot 3.png",
+          "/ambiance/Screenshot 4.png",
+          "/ambiance/Screenshot 5.png",
+          "/ambiance/Screenshot 6.png",
+          "/ambiance/Screenshot 7.png",
+          "/ambiance/Screenshot 8.png",
+          "/ambiance/Screenshot 9.png",
+        ]
       },
       { 
         name: "E-Shoes", 
@@ -154,19 +178,6 @@ export const resumeData = {
           "/eshoes/Screenshot 4.png",
           "/eshoes/Screenshot 5.png"
         ]
-      },
-      { 
-        name: "Contact App", 
-        url: "contact-app-theta-sooty.vercel.app", 
-        stack: "React, TailwindCSS, FireBase",
-        description: "A modern contact management application with cloud synchronization. Features instant search, categorization, and secure data storage.",
-        images: [
-          "/contact-app/Screenshot 1.png",
-          "/contact-app/Screenshot 2.png",
-          "/contact-app/Screenshot 3.png",
-          "/contact-app/Screenshot 4.png"
-        ],
-        youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       },
       { 
         name: "Food Network", 

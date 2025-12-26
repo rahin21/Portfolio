@@ -161,7 +161,7 @@ export default function Home() {
                     options={{
                       strings: [
                         "Junior Software Engineer",
-                        "Full Stack Developer",
+                        "Full Stack Engineer",
                         "Computer Science Graduate"
                       ],
                       autoStart: true,
