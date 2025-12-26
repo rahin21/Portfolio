@@ -1,15 +1,16 @@
 "use client";
 
-import React, { memo, useState } from "react";
+import React, { memo, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { resumeData } from "@/data/resume";
-import { Github, Linkedin, Facebook, Mail, Menu, Globe, X, Send } from "lucide-react";
+import { Github, Linkedin, Facebook, Mail, Menu, Globe, X, Send, Loader2 } from "lucide-react";
 import Typewriter from "typewriter-effect";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import { techIcons } from "@/data/techIcons";
+import emailjs from '@emailjs/browser';
 
 // Optimized Tech Badge Component (Vertical / Original Design)
 const TechBadge = memo(({ skill, index }: { skill: string, index: number }) => {
@@ -42,6 +43,41 @@ TechBadge.displayName = "TechBadge";
 export default function Home() {
   const { personalInfo, projects, experience } = resumeData;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSending, setIsSending] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<{type: 'success' | 'error' | null, text: string}>({ type: null, text: '' });
+
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSending(true);
+    setStatusMessage({ type: null, text: '' });
+
+    // Using environment variables for EmailJS
+    const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
+    const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
+    const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
+
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+        setIsSending(false);
+        setStatusMessage({ type: 'error', text: 'EmailJS configuration is missing.' });
+        console.error('Missing EmailJS environment variables');
+        return;
+    }
+
+    if (formRef.current) {
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+            .then((result) => {
+                setIsSending(false);
+                setStatusMessage({ type: 'success', text: 'Message sent successfully!' });
+                if (formRef.current) formRef.current.reset();
+            }, (error) => {
+                setIsSending(false);
+                setStatusMessage({ type: 'error', text: 'Failed to send message. Please try again.' });
+                console.error('EmailJS Error Details:', error);
+                if (error.text) console.error('EmailJS Error Text:', error.text);
+            });
+    }
+  };
 
   // Combine projects for the showcase
   const allProjects = [/*...projects.contribution,*/ ...projects.personal];
@@ -187,7 +223,7 @@ export default function Home() {
 
               <div className="flex flex-col md:flex-row gap-8 items-center lg:items-center justify-center lg:justify-start mt-12">
                 <div className="max-w-md text-gray-400 xl:text-lg text-base leading-relaxed mx-auto lg:mx-0">
-                   I build fast, scalable, and user-friendly web applications using modern JavaScript technologies. My main tools of choice are <span className="text-[#4ade80]">React</span> on the frontend and <span className="text-[#4ade80]">Node.js</span> on the backend.
+                   🚀 Junior Software Engineer @ <span className="text-[#4ade80]">Ascend AI</span>. I craft high-performance web and mobile apps using <span className="text-[#4ade80]">Next.js</span>, <span className="text-[#4ade80]">TypeScript</span>, and <span className="text-[#4ade80]">React Native</span>. Dedicated to UI/UX optimization and building scalable, reusable components. 💻✨
                 </div>
               </div>
 
@@ -231,9 +267,12 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="relative w-[280px] h-[350px] md:w-[400px] md:h-[500px]"
              >
+                {/* Back Glow Effect */}
+                <div className="absolute -inset-4 bg-[#4ade80] opacity-30 blur-[40px] rounded-full z-[-1]" />
+                
                 {/* Image Container with Glow */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#4ade80]/20 to-transparent rounded-2xl" />
-                <div className="w-full h-full bg-gray-800 rounded-2xl overflow-hidden border border-white/10 relative group">
+                <div className="w-full h-full bg-gray-800 rounded-2xl overflow-hidden border-2 border-[#4ade80] relative group shadow-[0_0_30px_rgba(74,222,128,0.3)]">
                     <Image 
                         src="/heroSectionProfilePic.jpg" 
                         alt={personalInfo.name}
@@ -375,13 +414,15 @@ export default function Home() {
                  {/* Background Glow */}
                  <div className="absolute top-0 right-0 w-64 h-64 bg-[#4ade80]/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
-                 <form className="space-y-6 relative z-10">
+                 <form ref={formRef} onSubmit={sendEmail} className="space-y-6 relative z-10">
                     <div className="grid md:grid-cols-2 gap-6">
                         <div className="space-y-2">
                             <label htmlFor="name" className="text-sm font-mono text-gray-400">Name</label>
                             <input 
                                 type="text" 
                                 id="name"
+                                name="user_name"
+                                required
                                 className="w-full bg-[#0d0d0d] border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#4ade80] focus:ring-1 focus:ring-[#4ade80] transition-all"
                                 placeholder="John Doe"
                             />
@@ -391,6 +432,8 @@ export default function Home() {
                             <input 
                                 type="email" 
                                 id="email"
+                                name="user_email"
+                                required
                                 className="w-full bg-[#0d0d0d] border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#4ade80] focus:ring-1 focus:ring-[#4ade80] transition-all"
                                 placeholder="john@example.com"
                             />
@@ -402,6 +445,7 @@ export default function Home() {
                         <input 
                             type="text" 
                             id="contact"
+                            name="user_contact"
                             className="w-full bg-[#0d0d0d] border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#4ade80] focus:ring-1 focus:ring-[#4ade80] transition-all"
                             placeholder="Phone number or other contact method"
                         />
@@ -411,15 +455,37 @@ export default function Home() {
                         <label htmlFor="message" className="text-sm font-mono text-gray-400">Message</label>
                         <textarea 
                             id="message"
+                            name="message"
+                            required
                             rows={5}
                             className="w-full bg-[#0d0d0d] border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#4ade80] focus:ring-1 focus:ring-[#4ade80] transition-all resize-none"
                             placeholder="Your message here..."
                         />
                     </div>
 
-                    <Button className="w-full bg-[#4ade80] text-black hover:bg-[#3ec46d] font-bold py-6 text-lg rounded-xl transition-all hover:scale-[1.02]">
-                        Send Message <Send size={20} className="ml-2" />
+                    <Button 
+                        type="submit" 
+                        disabled={isSending}
+                        className="w-full bg-[#4ade80] text-black hover:bg-[#3ec46d] font-bold py-6 text-lg rounded-xl transition-all hover:scale-[1.02] disabled:opacity-70 disabled:hover:scale-100"
+                    >
+                        {isSending ? (
+                            <>Sending... <Loader2 size={20} className="ml-2 animate-spin" /></>
+                        ) : (
+                            <>Send Message <Send size={20} className="ml-2" /></>
+                        )}
                     </Button>
+
+                    {statusMessage.text && (
+                        <motion.div 
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className={`text-center p-3 rounded-lg text-sm font-bold ${
+                                statusMessage.type === 'success' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'
+                            }`}
+                        >
+                            {statusMessage.text}
+                        </motion.div>
+                    )}
                  </form>
             </motion.div>
         </div>
