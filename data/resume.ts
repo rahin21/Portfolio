@@ -191,12 +191,6 @@ export const resumeData = {
           "/eshoes/Screenshot 5.png"
         ]
       },
-      { 
-        name: "Food Network", 
-        url: "food-network-iota.vercel.app", 
-        stack: "React, TailwindCSS, NextJs, Shadcn/ui",
-        description: "A culinary discovery platform connecting food enthusiasts. Showcases recipes, reviews, and trending dining spots." 
-      },
     ],
     contribution: [
       { 
