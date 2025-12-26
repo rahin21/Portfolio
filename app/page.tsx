@@ -33,7 +33,7 @@ const TechBadge = memo(({ skill, index }: { skill: string, index: number }) => {
             <div className="p-4 rounded-2xl bg-[#1a1a1a] border border-white/10 group-hover:border-[#4ade80] group-hover:scale-125 group-hover:rotate-6 transition-all duration-300 ease-out">
                 <Icon size={40} className="text-gray-400 group-hover:text-[#4ade80] transition-colors duration-300" />
             </div>
-            <span className="text-xs font-mono text-gray-500 group-hover:text-white transition-colors duration-300">{skill}</span>
+            <span className="md:text-xs text-[10px] md:font-mono font-semibold text-gray-500 group-hover:text-white transition-colors duration-300">{skill}</span>
         </motion.div>
     );
 });
