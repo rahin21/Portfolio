@@ -11,6 +11,9 @@ import Typewriter from "typewriter-effect";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import { techIcons } from "@/data/techIcons";
 import { sendEmail } from "./actions";
+import dynamic from "next/dynamic";
+
+const PixelStars = dynamic(() => import("@/components/PixelStars"), { ssr: false });
 
 // Optimized Tech Badge Component (Vertical / Original Design)
 const TechBadge = memo(({ skill, index }: { skill: string, index: number }) => {
@@ -183,8 +186,9 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center px-4 sm:px-8 md:px-16 lg:px-24 pt-20 pb-24 relative overflow-hidden">
+        <PixelStars />
         {/* Background Gradient/Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#4ade80] opacity-20 blur-[120px] rounded-full pointer-events-none" />
+        <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#4ade80] opacity-20 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
           
