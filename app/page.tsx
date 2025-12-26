@@ -10,7 +10,7 @@ import { Github, Linkedin, Facebook, Mail, Menu, Globe, X, Send, Loader2 } from 
 import Typewriter from "typewriter-effect";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import { techIcons } from "@/data/techIcons";
-import emailjs from '@emailjs/browser';
+import { sendEmail } from "./actions";
 
 // Optimized Tech Badge Component (Vertical / Original Design)
 const TechBadge = memo(({ skill, index }: { skill: string, index: number }) => {
@@ -47,35 +47,20 @@ export default function Home() {
   const [isSending, setIsSending] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{type: 'success' | 'error' | null, text: string}>({ type: null, text: '' });
 
-  const sendEmail = (e: React.FormEvent) => {
+  const handleSendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSending(true);
     setStatusMessage({ type: null, text: '' });
 
-    // Using environment variables for EmailJS
-    const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
-    const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
-    const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
+    const formData = new FormData(e.currentTarget);
+    const result = await sendEmail(formData);
 
-    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-        setIsSending(false);
-        setStatusMessage({ type: 'error', text: 'EmailJS configuration is missing.' });
-        console.error('Missing EmailJS environment variables');
-        return;
-    }
-
-    if (formRef.current) {
-        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
-            .then((result) => {
-                setIsSending(false);
-                setStatusMessage({ type: 'success', text: 'Message sent successfully!' });
-                if (formRef.current) formRef.current.reset();
-            }, (error) => {
-                setIsSending(false);
-                setStatusMessage({ type: 'error', text: 'Failed to send message. Please try again.' });
-                console.error('EmailJS Error Details:', error);
-                if (error.text) console.error('EmailJS Error Text:', error.text);
-            });
+    setIsSending(false);
+    if (result.success) {
+        setStatusMessage({ type: 'success', text: result.message });
+        if (formRef.current) formRef.current.reset();
+    } else {
+        setStatusMessage({ type: 'error', text: result.message });
     }
   };
 
@@ -215,14 +200,14 @@ export default function Home() {
                 </span>
               </div>
               
-              <h1 className="text-[5rem] lg:text-[7rem] leading-[1.3] lg:leading-[0.85] font-black tracking-normal text-[#4ade80] mb-8 break-words flex flex-col items-center lg:items-start">
+              <h1 className="text-[5rem] lg:text-[7rem] leading-[1.3] lg:leading-[0.85] font-black tracking-normal text-[#4ade80] mb-8 break-words flex flex-col items-center lg:items-start text-center lg:text-left">
                 {personalInfo.name.split(' ').map((word, i) => (
                   <span key={i} className="block">{word}</span>
                 ))}
               </h1>
 
               <div className="flex flex-col md:flex-row gap-8 items-center lg:items-center justify-center lg:justify-start mt-12">
-                <div className="max-w-md text-gray-400 xl:text-lg text-base leading-relaxed mx-auto lg:mx-0">
+                <div className="max-w-md text-gray-400 xl:text-lg text-base leading-relaxed mx-auto lg:mx-0 text-center lg:text-left">
                    🚀 Junior Software Engineer @ <span className="text-[#4ade80]">Ascend AI</span>. I craft high-performance web and mobile apps using <span className="text-[#4ade80]">Next.js</span>, <span className="text-[#4ade80]">TypeScript</span>, and <span className="text-[#4ade80]">React Native</span>. Dedicated to UI/UX optimization and building scalable, reusable components. 💻✨
                 </div>
               </div>
@@ -414,7 +399,7 @@ export default function Home() {
                  {/* Background Glow */}
                  <div className="absolute top-0 right-0 w-64 h-64 bg-[#4ade80]/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2" />
 
-                 <form ref={formRef} onSubmit={sendEmail} className="space-y-6 relative z-10">
+                 <form ref={formRef} onSubmit={handleSendEmail} className="space-y-6 relative z-10">
                     <div className="grid md:grid-cols-2 gap-6">
                         <div className="space-y-2">
                             <label htmlFor="name" className="text-sm font-mono text-gray-400">Name</label>

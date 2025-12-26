@@ -280,7 +280,7 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
                 </div>
 
                 {/* Carousel Window */}
-                <div className="overflow-hidden py-4 -mx-4 px-4">
+                <div className="overflow-hidden py-4 -mx-4 px-4 sm:mx-0 sm:px-0">
                     <motion.div 
                         className="flex"
                         animate={{ x: `-${currentIndex * (100 / itemsPerPage)}%` }}
@@ -289,7 +289,7 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
                         {featuredProjects.map((project, index) => (
                             <div 
                                 key={index} 
-                                className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 px-3"
+                                className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 px-3 sm:px-3"
                             >
                                 <ProjectCard project={project} className="h-[380px]" />
                             </div>
