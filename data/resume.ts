@@ -18,7 +18,7 @@ export const resumeData = {
     skills: {
       languagesAndDatabases: [
         "C", "C++", "Python", "HTML", "CSS", "Javascript", "TypeScript",
-        "Github", "MySQL", "PostgreSQL", "Firebase", "MongoDB", "Supabase"
+        "Github", "MySQL", "PostgreSQL", "Firebase", "MongoDB", "Supabase", "Prisma", "Drizzle"
       ],
       frameworksAndLibraries: [
         "ReactJS", "NextJS", "React Native", "TailwindCSS", "ExpressJS", "Electron.JS"
@@ -94,17 +94,100 @@ export const resumeData = {
   ],
   projects: {
     personal: [
-			{ name: "Chrono Stride AR", url: "chrono-stride-ar.vercel.app", stack: "React, WebAR.Rocks & Ant Design." },
-			{ name: "Booking System", url: "booking-system-pearl-beta.vercel.app", stack: "ShadCN UI, Next.JS, Cloudinary & PostgreSQL it has an admin panel" },
-			{ name: "Issue Tracker", url: "issue-tracker-seven-omega.vercel.app", stack: "Shadcn/ui, NextJs, Prisma & MongoDB" },
-      { name: "Ambiance", url: "ambiance-sigma.vercel.app", stack: "TailwindCSS, React.js, Next.Js & It has an admin panel from where the frontend can be edited" },
-      { name: "E-Shoes", url: "eshoes-kohl.vercel.app", stack: "Bootstrap, EJS, Node.js & Express.js" },
-      { name: "Contact App", url: "contact-app-theta-sooty.vercel.app", stack: "React, TailwindCSS, FireBase" },
-      { name: "Food Network", url: "food-network-iota.vercel.app", stack: "React, TailwindCSS, NextJs & Shadcn/ui" },
+			{ 
+        name: "Chrono Stride AR", 
+        url: "chrono-stride-ar.vercel.app", 
+        stack: "React, WebAR.Rocks, Ant Design",
+        description: "An immersive Augmented Reality experience built with WebAR.Rocks. Users can interact with 3D models in real-time directly through their browser.",
+        images: [
+          "/chrono-stride-ar/Screenshot 1.png",
+          "/chrono-stride-ar/Screenshot 2.png",
+          "/chrono-stride-ar/Screenshot 3.png",
+          "/chrono-stride-ar/Screenshot 4.png",
+          "/chrono-stride-ar/Screenshot 5.jpeg",
+          "/chrono-stride-ar/Screenshot 6.jpeg",
+          "/chrono-stride-ar/Screenshot 7.png"
+        ],
+        youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      },
+			{ 
+        name: "Booking System", 
+        url: "booking-system-pearl-beta.vercel.app", 
+        stack: "ShadCN UI, Next.JS, Cloudinary, PostgreSQL",
+        description: "A comprehensive booking management platform featuring a robust admin panel. Handles scheduling, resource allocation, and user management efficiently.",
+        images: [
+          "/booking-system/Screenshot 1.png",
+          "/booking-system/Screenshot 2.png",
+          "/booking-system/Screenshot 3.png",
+          "/booking-system/Screenshot 4.png",
+          "/booking-system/Screenshot 5.png"
+        ]
+      },
+			{ 
+        name: "Issue Tracker", 
+        url: "issue-tracker-seven-omega.vercel.app", 
+        stack: "Shadcn/ui, NextJs, Prisma, MongoDB",
+        description: "A streamlined issue tracking solution for development teams. Features real-time updates, priority management, and collaborative tools.",
+        images: [
+          "/Issue-tracker/Screenshot 1.png",
+          "/Issue-tracker/Screenshot 2.png",
+          "/Issue-tracker/Screenshot 3.png",
+          "/Issue-tracker/Screenshot 4.png",
+          "/Issue-tracker/Screenshot 5.png"
+        ]
+      },
+      { 
+        name: "Ambiance", 
+        url: "ambiance-sigma.vercel.app", 
+        stack: "TailwindCSS, React.js, Next.Js, With Admin Panel",
+        description: "A mood-enhancing application with curated soundscapes and visual themes. Includes an admin dashboard for content management.",
+      },
+      { 
+        name: "E-Shoes", 
+        url: "eshoes-kohl.vercel.app", 
+        stack: "Bootstrap, EJS, Node.js, Express.js",
+        description: "An e-commerce platform for footwear with a complete shopping cart system. Built with a server-side rendering approach for optimal performance.",
+        images: [
+          "/eshoes/Screenshot 1.png",
+          "/eshoes/Screenshot 2.png",
+          "/eshoes/Screenshot 3.png",
+          "/eshoes/Screenshot 4.png",
+          "/eshoes/Screenshot 5.png"
+        ]
+      },
+      { 
+        name: "Contact App", 
+        url: "contact-app-theta-sooty.vercel.app", 
+        stack: "React, TailwindCSS, FireBase",
+        description: "A modern contact management application with cloud synchronization. Features instant search, categorization, and secure data storage.",
+        images: [
+          "/contact-app/Screenshot 1.png",
+          "/contact-app/Screenshot 2.png",
+          "/contact-app/Screenshot 3.png",
+          "/contact-app/Screenshot 4.png"
+        ],
+        youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      },
+      { 
+        name: "Food Network", 
+        url: "food-network-iota.vercel.app", 
+        stack: "React, TailwindCSS, NextJs, Shadcn/ui",
+        description: "A culinary discovery platform connecting food enthusiasts. Showcases recipes, reviews, and trending dining spots." 
+      },
     ],
     contribution: [
-      { name: "Ascend-AI", url: "ascendai.site", stack: "Next.js, TypeScript, Shadcn/ui, Framer-motion" },
-      { name: "InstaDM", url: "instadm.ai", stack: "Electron.js, Next.js, TypeScript, Firebase" }
+      { 
+        name: "Ascend-AI", 
+        url: "ascendai.site", 
+        stack: "Next.js, TypeScript, Shadcn/ui, Framer-motion",
+        description: "Contributed to the core UI components and animation systems. Enhanced user engagement through smooth transitions and responsive design."
+      },
+      { 
+        name: "InstaDM", 
+        url: "instadm.ai", 
+        stack: "Electron.js, Next.js, TypeScript, Firebase",
+        description: "Helped build the desktop application architecture. Implemented real-time messaging features and cross-platform compatibility."
+      }
     ]
   }
 };
