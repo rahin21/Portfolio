@@ -421,8 +421,7 @@ export default function Home() {
       
       {/* Footer */}
       <footer className="border-t border-white/10 py-12 px-4 text-center text-gray-500 text-sm">
-         <p>© {new Date().getFullYear()} Rahin Zaman. All rights reserved.</p>
-         <p className="mt-2">Designed inspired by Bruno Simon.</p>
+         <p>© {new Date().getFullYear()} <Link href="/" className="font-semibold">Rahin Zaman.</Link> All rights reserved.</p>
       </footer>
     </div>
   );
