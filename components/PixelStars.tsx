@@ -20,7 +20,7 @@ export default function PixelStars() {
   }), []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Stars 1 */}
       <div 
         className="w-px h-px bg-transparent absolute top-0 left-0 animate-[animStar_50s_linear_infinite]"
@@ -53,6 +53,9 @@ export default function PixelStars() {
             style={{ boxShadow: shadows.big }}
         />
       </div>
+
+      {/* Bottom Fade Gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-[300px] bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/80 to-transparent" />
     </div>
   );
 }

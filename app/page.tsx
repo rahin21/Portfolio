@@ -78,6 +78,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#0d0d0d] text-white font-sans selection:bg-[#4ade80] selection:text-black">
+      <PixelStars />
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-center">
         <div className="md:w-40 w-10 ">
@@ -186,7 +187,6 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center px-4 sm:px-8 md:px-16 lg:px-24 pt-20 pb-24 relative overflow-hidden">
-        <PixelStars />
         {/* Background Gradient/Glow */}
         <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#4ade80] opacity-20 blur-[120px] rounded-full pointer-events-none" />
 
@@ -289,7 +289,7 @@ export default function Home() {
       </section>
 
       {/* Tech Stack Section */}
-      <section id="tech-stack" className="py-20 bg-[#0d0d0d] relative border-t border-white/5">
+      <section id="tech-stack" className="py-20 bg-[#0d0d0d] relative z-10 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 lg:px-24">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -310,7 +310,7 @@ export default function Home() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20 bg-[#0d0d0d] relative border-t border-white/5">
+      <section id="experience" className="py-20 bg-[#0d0d0d] relative z-10 border-t border-white/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-8">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -379,7 +379,7 @@ export default function Home() {
       </section>
 
       {/* Projects Showcase Section */}
-      <section id="projects" className="py-20 bg-[#0d0d0d] relative border-t border-white/5">
+      <section id="projects" className="py-20 bg-[#0d0d0d] relative z-10 border-t border-white/5">
          <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 lg:px-24">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -396,7 +396,7 @@ export default function Home() {
       </section>
       
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-[#0d0d0d] relative border-t border-white/5">
+      <section id="contact" className="py-20 bg-[#0d0d0d] relative z-10 border-t border-white/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-8">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -514,7 +514,7 @@ export default function Home() {
       </section>
       
       {/* Footer */}
-      <footer className="border-t border-white/10 py-12 px-4 text-center text-gray-500 text-sm">
+      <footer className="border-t border-white/10 py-12 px-4 text-center text-gray-500 text-sm bg-[#0d0d0d] relative z-10">
          <p>© {new Date().getFullYear()} <Link href="/" className="font-semibold">Rahin Zaman.</Link> All rights reserved.</p>
       </footer>
     </div>
