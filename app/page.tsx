@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { resumeData } from "@/data/resume";
-import { Github, Linkedin, Facebook, Mail, Menu, Globe, X, Send, Loader2 } from "lucide-react";
+import { Github, Linkedin, Facebook, Mail, Menu, Globe, X, Send, Loader2, Calendar } from "lucide-react";
 import Typewriter from "typewriter-effect";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import { techIcons } from "@/data/techIcons";
@@ -448,17 +448,36 @@ export default function Home() {
                         />
                     </div>
 
-                    <Button 
-                        type="submit" 
-                        disabled={isSending}
-                        className="w-full bg-[#4ade80] text-black hover:bg-[#3ec46d] font-bold py-6 text-lg rounded-xl transition-all hover:scale-[1.02] disabled:opacity-70 disabled:hover:scale-100"
-                    >
-                        {isSending ? (
-                            <>Sending... <Loader2 size={20} className="ml-2 animate-spin" /></>
-                        ) : (
-                            <>Send Message <Send size={20} className="ml-2" /></>
-                        )}
-                    </Button>
+                    <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
+                        <Button 
+                            type="submit" 
+                            disabled={isSending}
+                            className="w-full sm:flex-1 h-14 bg-[#4ade80] text-black hover:bg-[#3ec46d] font-bold text-lg rounded-xl transition-all hover:scale-[1.02] disabled:opacity-70 disabled:hover:scale-100 flex items-center justify-center"
+                        >
+                            {isSending ? (
+                                <>Sending... <Loader2 size={20} className="ml-2 animate-spin" /></>
+                            ) : (
+                                <>Send Message <Send size={20} className="ml-2" /></>
+                            )}
+                        </Button>
+
+                        <div className="flex items-center gap-4 w-full sm:w-auto sm:hidden">
+                            <div className="h-px bg-white/10 w-full" />
+                            <span className="text-gray-500 text-sm font-mono whitespace-nowrap">OR</span>
+                            <div className="h-px bg-white/10 w-full" />
+                        </div>
+                        <span className="hidden sm:block text-gray-500 font-mono text-sm">OR</span>
+
+                        <a 
+                            href="https://calendly.com/mdrahinzaman21/30min" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="w-full sm:flex-1 h-14 bg-[#1a1a1a] border border-[#4ade80] text-white hover:bg-[#222] hover:shadow-[0_0_20px_rgba(74,222,128,0.2)] font-bold text-lg rounded-xl transition-all hover:scale-[1.02] flex items-center justify-center gap-2 group"
+                        >
+                            <Calendar size={20} className="text-[#4ade80] group-hover:scale-110 transition-transform" />
+                            Book a Free Call
+                        </a>
+                    </div>
 
                     {statusMessage.text && (
                         <motion.div 
