@@ -160,15 +160,15 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="text-lg md:text-xl mb-6 font-medium flex flex-col md:flex-row items-center lg:items-start gap-2 min-h-[auto] md:h-8 justify-center lg:justify-start">
+              <div className="text-2xl lg:text-xl xl:text-3xl mb-6 font-medium flex flex-col md:flex-row items-center lg:items-start gap-2 min-h-[auto] md:h-8 justify-center lg:justify-start">
                 <span className="flex items-center gap-2">Hey <span className="text-2xl">👋</span>, {`I'm`} a </span>
                 <span className="text-[#4ade80] inline-block">
                   <Typewriter
                     options={{
                       strings: [
-                        "Junior Software Engineer",
+                        "JR Software Engineer",
                         "Full Stack Engineer",
-                        "Computer Science Graduate"
+                        "CSE Graduate"
                       ],
                       autoStart: true,
                       loop: true,
@@ -186,7 +186,7 @@ export default function Home() {
               </h1>
 
               <div className="flex flex-col md:flex-row gap-8 items-center lg:items-center justify-center lg:justify-start mt-12">
-                <div className="max-w-md text-gray-400 text-sm md:text-base leading-relaxed mx-auto lg:mx-0">
+                <div className="max-w-md text-gray-400 xl:text-lg text-base leading-relaxed mx-auto lg:mx-0">
                    I build fast, scalable, and user-friendly web applications using modern JavaScript technologies. My main tools of choice are <span className="text-[#4ade80]">React</span> on the frontend and <span className="text-[#4ade80]">Node.js</span> on the backend.
                 </div>
               </div>
