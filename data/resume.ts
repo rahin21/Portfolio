@@ -110,6 +110,18 @@ export const resumeData = {
         ],
         youtube: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       },
+      { 
+        name: "Portfolio Website", 
+        url: "rahinzaman.vercel.app", 
+        stack: "Next.JS, TailwindCSS, ShadCN UI, Framer Motion, Lucid React",
+        description: "Modern Next.js portfolio with interactive animations, server-side rendering, and a custom responsive design.",
+        images: [
+          "/portfolio-website/Screenshot 1.png",
+          "/portfolio-website/Screenshot 2.png",
+          "/portfolio-website/Screenshot 3.png",
+          "/portfolio-website/Screenshot 4.png",
+        ]
+      },
 			{ 
         name: "Booking System", 
         url: "booking-system-pearl-beta.vercel.app", 
