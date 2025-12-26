@@ -55,10 +55,16 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#0d0d0d] text-white font-sans selection:bg-[#4ade80] selection:text-black">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-center mix-blend-difference">
-        <div className="w-40">
+      <nav className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-center">
+        <div className="md:w-40 w-10 ">
             <Link href="/">
-                <Image src="/logo.png" alt="Logo" width={50} height={50} className="object-contain rounded-lg" />
+                <Image 
+                    src="/logo.png" 
+                    alt="Logo" 
+                    width={50} 
+                    height={50} 
+                    className="object-contain rounded-lg drop-shadow-[0_0_15px_rgba(74,222,128,0.5)]" 
+                />
             </Link>
         </div>
         
@@ -141,21 +147,21 @@ export default function Home() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col justify-center px-4 sm:px-8 md:px-16 lg:px-24 pt-20 relative overflow-hidden">
+      <section className="min-h-screen flex flex-col justify-center px-4 sm:px-8 md:px-16 lg:px-24 pt-20 pb-24 relative overflow-hidden">
         {/* Background Gradient/Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#4ade80] opacity-10 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#4ade80] opacity-20 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
           
           {/* Text Content */}
-          <div className="relative z-10 order-2 lg:order-1">
+          <div className="relative z-10 order-2 lg:order-1 text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="text-lg md:text-xl mb-4 font-medium flex items-center gap-2 h-8">
-                Hey <span className="text-2xl">👋</span>, {`I'm`} a 
+              <div className="text-lg md:text-xl mb-6 font-medium flex flex-col md:flex-row items-center lg:items-start gap-2 min-h-[auto] md:h-8 justify-center lg:justify-start">
+                <span className="flex items-center gap-2">Hey <span className="text-2xl">👋</span>, {`I'm`} a </span>
                 <span className="text-[#4ade80] inline-block">
                   <Typewriter
                     options={{
@@ -173,20 +179,20 @@ export default function Home() {
                 </span>
               </div>
               
-              <h1 className="text-[12vw] lg:text-[7rem] leading-[0.85] font-black tracking-normal text-[#4ade80] mb-8 break-words">
+              <h1 className="text-[5rem] lg:text-[7rem] leading-[1.3] lg:leading-[0.85] font-black tracking-normal text-[#4ade80] mb-8 break-words flex flex-col items-center lg:items-start">
                 {personalInfo.name.split(' ').map((word, i) => (
                   <span key={i} className="block">{word}</span>
                 ))}
               </h1>
 
-              <div className="flex flex-col md:flex-row gap-8 items-start md:items-center mt-12">
-                <div className="max-w-md text-gray-400 text-sm md:text-base leading-relaxed">
+              <div className="flex flex-col md:flex-row gap-8 items-center lg:items-center justify-center lg:justify-start mt-12">
+                <div className="max-w-md text-gray-400 text-sm md:text-base leading-relaxed mx-auto lg:mx-0">
                    I build fast, scalable, and user-friendly web applications using modern JavaScript technologies. My main tools of choice are <span className="text-[#4ade80]">React</span> on the frontend and <span className="text-[#4ade80]">Node.js</span> on the backend.
                 </div>
               </div>
 
               {/* Social Icons */}
-              <div className="flex gap-6 mt-12">
+              <div className="flex gap-6 mt-12 justify-center lg:justify-start">
                  {personalInfo.socials.map((social) => {
                     let Icon = Globe; // Default icon
                     if (social.name.toLowerCase().includes("github")) Icon = Github;
