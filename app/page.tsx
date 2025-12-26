@@ -89,13 +89,18 @@ export default function Home() {
             </Link>
         </div>
         
-        {/* Right Side: Resume (Desktop) & Hamburger (Mobile) */}
+        {/* Right Side: Book a Free Call (Desktop) & Hamburger (Mobile) */}
         <div className="flex items-center gap-4">
-            <Link href="/resume" className="hidden sm:block">
+            <a 
+                href="https://calendly.com/mdrahinzaman21/30min" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hidden sm:block"
+            >
                 <Button className="rounded-full bg-white text-black hover:bg-gray-200 transition-colors font-bold">
-                    Resume
+                    Book a Free Call
                 </Button>
-            </Link>
+            </a>
 
             {/* Hamburger Menu (Visible on all screens) */}
             <Button 
@@ -143,7 +148,16 @@ export default function Home() {
                         <Link href="#experience" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[#4ade80] transition-colors">Experience</Link>
                         <Link href="#projects" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[#4ade80] transition-colors">Projects</Link>
                         <Link href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[#4ade80] transition-colors">Contact</Link>
-                        <Link href="/resume" onClick={() => setIsMobileMenuOpen(false)} className="text-[#4ade80] hover:text-white transition-colors">View Resume</Link>
+                        <Link href="/resume" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-400 hover:text-[#4ade80] transition-colors">Resume</Link>
+                        <a 
+                            href="https://calendly.com/mdrahinzaman21/30min" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            onClick={() => setIsMobileMenuOpen(false)} 
+                            className="text-[#4ade80] hover:text-white transition-colors"
+                        >
+                            Book a Free Call
+                        </a>
                     </div>
 
                     <div className="mt-auto">
