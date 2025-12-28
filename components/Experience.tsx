@@ -26,10 +26,6 @@ export function Experience() {
             )}
             <p className="text-sm text-[#4ade80] font-semibold mb-2">Duration: {job.duration}</p>
             
-            {job.description && (
-              <p className="text-gray-400 leading-relaxed mb-2">{job.description}</p>
-            )}
-
             {job.points && (
               <ul className="list-disc list-outside ml-5 space-y-1 text-gray-400">
                 {job.points.map((point, idx) => (
