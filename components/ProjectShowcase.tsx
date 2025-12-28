@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Youtube, ChevronLeft, ChevronRight, X, Grid } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -22,7 +23,7 @@ interface ProjectShowcaseProps {
     projects: Project[];
 }
 
-const ProjectCard = ({ project, className = "" }: { project: Project; className?: string }) => {
+export const ProjectCard = ({ project, className = "" }: { project: Project; className?: string }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
     const images = project.images || (project.image ? [project.image] : []);
@@ -224,7 +225,6 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
     // Default carousel shows featured projects (first 5)
     const featuredProjects = projects.slice(0, 5);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [itemsPerPage, setItemsPerPage] = useState(1);
 
     // Responsive items per page for carousel
@@ -313,72 +313,16 @@ export default function ProjectShowcase({ projects }: ProjectShowcaseProps) {
 
                 {/* View All Button */}
                 <div className="mt-12 text-center">
-                    <Button 
-                        onClick={() => setIsDrawerOpen(true)}
-                        className="bg-transparent border border-[#4ade80] text-[#4ade80] hover:bg-[#4ade80] hover:text-black px-8 py-6 rounded-full font-bold text-lg group transition-all"
-                    >
-                        <Grid size={20} className="mr-2" />
-                        View All Projects
-                    </Button>
+                    <Link href="/projects">
+                        <Button 
+                            className="bg-transparent border border-[#4ade80] text-[#4ade80] hover:bg-[#4ade80] hover:text-black px-8 py-6 rounded-full font-bold text-lg group transition-all"
+                        >
+                            <Grid size={20} className="mr-2" />
+                            View All Projects
+                        </Button>
+                    </Link>
                 </div>
             </div>
-
-            {/* Full Screen Drawer */}
-            <AnimatePresence>
-                {isDrawerOpen && (
-                    <div className="fixed inset-0 z-[100] flex items-end justify-center sm:items-center">
-                        {/* Backdrop */}
-                        <motion.div 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            onClick={() => setIsDrawerOpen(false)}
-                            className="absolute inset-0 bg-black/90 backdrop-blur-md"
-                        />
-
-                        {/* Drawer Content */}
-                        <motion.div
-                            initial={{ y: "100%" }}
-                            animate={{ y: 0 }}
-                            exit={{ y: "100%" }}
-                            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                            className="relative w-full h-[90vh] sm:h-[95vh] bg-[#0d0d0d] border-t border-white/10 rounded-t-3xl shadow-2xl flex flex-col overflow-hidden"
-                        >
-                            {/* Drawer Header */}
-                            <div className="flex justify-between items-center p-6 border-b border-white/10 bg-[#0d0d0d] z-10">
-                                <div>
-                                    <h2 className="text-2xl font-black uppercase tracking-tight text-white">All Projects</h2>
-                                    <p className="text-gray-400 text-sm">Explore my complete portfolio</p>
-                                </div>
-                                <Button 
-                                    size="icon" 
-                                    variant="ghost" 
-                                    onClick={() => setIsDrawerOpen(false)}
-                                    className="rounded-full hover:bg-white/10 text-white"
-                                >
-                                    <X size={24} />
-                                </Button>
-                            </div>
-
-                            {/* Scrollable Grid */}
-                            <div className="flex-grow overflow-y-auto p-6 sm:p-10 custom-scrollbar">
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-[1920px] mx-auto">
-                                    {projects.map((project, index) => (
-                                        <motion.div
-                                            key={index}
-                                            initial={{ opacity: 0, scale: 0.9 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            transition={{ delay: index * 0.05 }}
-                                        >
-                                            <ProjectCard project={project} className="h-full min-h-[400px]" />
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                )}
-            </AnimatePresence>
         </div>
     );
 }

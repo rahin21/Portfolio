@@ -9,6 +9,7 @@ import { resumeData } from "@/data/resume";
 import { Github, Linkedin, Facebook, Mail, Menu, Globe, X, Send, Loader2, Calendar } from "lucide-react";
 import Typewriter from "typewriter-effect";
 import ProjectShowcase from "@/components/ProjectShowcase";
+import Achievements from "@/components/Achievements";
 import { techIcons } from "@/data/techIcons";
 import { sendEmail } from "./actions";
 import dynamic from "next/dynamic";
@@ -377,6 +378,9 @@ export default function Home() {
             </div>
         </div>
       </section>
+
+      {/* Achievements Section */}
+      <Achievements />
 
       {/* Projects Showcase Section */}
       <section id="projects" className="py-20 bg-[#0d0d0d] relative z-10 border-t border-white/5">
