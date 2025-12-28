@@ -327,7 +327,8 @@ export default function Achievements() {
         </div>
 
         {/* Lightbox Modal */}
-        {createPortal(
+        {/* Lightbox Modal */}
+        {mounted && createPortal(
             <AnimatePresence>
                 {selectedImage && (
                     <motion.div
