@@ -1,12 +1,10 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { resumeData } from "@/data/resume";
 import { ProjectCard } from "@/components/ProjectShowcase";
-import { ChevronLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { BackToHomeButton } from "@/components/BackToHomeButton";
 
 export default function ProjectsPage() {
     const { projects } = resumeData;
@@ -14,6 +12,7 @@ export default function ProjectsPage() {
 
     return (
         <div className="min-h-screen bg-[#0d0d0d] text-white font-sans selection:bg-[#4ade80] selection:text-black py-20 px-4 sm:px-8 md:px-16 lg:px-24">
+            <BackToHomeButton />
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div
@@ -22,12 +21,6 @@ export default function ProjectsPage() {
                     className="flex flex-col md:flex-row justify-between items-center mb-16 gap-6"
                 >
                     <div className="text-center md:text-left">
-                        <Link href="/">
-                            <Button variant="ghost" className="group text-gray-400 hover:text-white mb-4 pl-0 hover:bg-transparent">
-                                <ChevronLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
-                                Back to Home
-                            </Button>
-                        </Link>
                         <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tight text-white mb-2">
                             All Projects
                         </h1>

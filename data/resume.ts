@@ -48,7 +48,11 @@ export const resumeData = {
       title: "Human Resources Intern",
       company: "Doreen, Dhaka",
       duration: "28.10.24 - 01.01.25",
-      description: "Assisted in recruitment by screening candidates, supporting interviews, and onboarding sales employees. Developed communication and coordination skills through collaboration with senior HR staff."
+      points: [
+        "Post: Intern.",
+        "Duration: 3 months.",
+        "Description: Assisted in recruitment by screening candidates, supporting interviews, and onboarding sales employees. Developed communication and coordination skills through collaboration with senior HR staff.",
+      ]
     },
     {
       title: "Frontend Developer",

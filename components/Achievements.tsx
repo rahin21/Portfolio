@@ -78,7 +78,7 @@ export default function Achievements() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4ade800a_1px,transparent_1px),linear-gradient(to_bottom,#4ade800a_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
         
         {/* Ambient Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[500px] bg-[#4ade80]/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[500px] bg-[#4ade80]/2 blur-[80px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/* Section Header */}
@@ -103,7 +103,7 @@ export default function Achievements() {
             {/* Timeline Structure */}
             <div className="relative">
                 {/* Vertical Line */}
-                <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#4ade80] via-[#4ade80]/20 to-transparent md:-translate-x-px" />
+                <div className="hidden md:block absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#4ade80] via-[#4ade80]/20 to-transparent md:-translate-x-px" />
 
                 {/* ITEM 1: ICPC HERO CARD (Left) */}
                 <div className="relative grid grid-cols-1 md:grid-cols-2 gap-12 mb-32">
@@ -115,7 +115,7 @@ export default function Achievements() {
                         className="md:text-right md:pr-12 relative"
                     >
                          {/* Timeline Dot */}
-                         <div className="absolute right-[-55px] top-8 w-4 h-4 rounded-full bg-[#0d0d0d] border-2 border-[#4ade80] z-20 hidden md:block shadow-[0_0_10px_#4ade80]" />
+                         <div className="absolute right-[-55px] top-8 w-4 h-4 rounded-full bg-[#0d0d0d] border-2 border-[#4ade80] z-20 hidden md:block shadow-[0_0_5px_#4ade80]" />
                          <div className="absolute right-[-49px] top-[40px] w-12 h-[2px] bg-[#4ade80] hidden md:block" />
 
                          <div className="inline-flex items-center gap-2 text-[#4ade80] font-mono text-sm mb-2">
@@ -280,7 +280,7 @@ export default function Achievements() {
                         className="md:text-right md:pr-12 relative"
                     >
                          {/* Timeline Dot */}
-                         <div className="absolute right-[-55px] top-8 w-4 h-4 rounded-full bg-[#0d0d0d] border-2 border-[#4ade80] z-20 hidden md:block shadow-[0_0_10px_#4ade80]" />
+                         <div className="absolute right-[-55px] top-8 w-4 h-4 rounded-full bg-[#0d0d0d] border-2 border-[#4ade80] z-20 hidden md:block shadow-[0_0_5px_#4ade80]" />
                          <div className="absolute right-[-49px] top-[40px] w-12 h-[2px] bg-[#4ade80] hidden md:block" />
 
                          <div className="inline-flex items-center gap-2 text-[#4ade80] font-mono text-sm mb-2">
@@ -326,7 +326,6 @@ export default function Achievements() {
             </div>
         </div>
 
-        {/* Lightbox Modal */}
         {/* Lightbox Modal */}
         {mounted && createPortal(
             <AnimatePresence>

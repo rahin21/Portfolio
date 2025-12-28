@@ -26,6 +26,7 @@ const ProjectTechBadge = memo(({ skill, index = 0 }: { skill: string, index?: nu
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: index * 0.05, type: "spring", stiffness: 300, damping: 20 }}
             className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1a1a1a] border border-white/10 hover:border-[#4ade80] hover:bg-[#1a1a1a]/80 transition-all duration-300 group cursor-default"
+            title={skill}
         >
             <Icon size={14} className="text-gray-400 group-hover:text-[#4ade80] transition-colors duration-300" />
             <span className="text-xs font-mono text-gray-300 group-hover:text-white transition-colors duration-300">{skill}</span>

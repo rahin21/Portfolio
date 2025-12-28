@@ -5,7 +5,7 @@ export function Sidebar() {
   const { personalInfo } = resumeData;
 
   return (
-    <div className="bg-[#1a1a1a] text-white w-full md:w-[320px] lg:w-[360px] flex-shrink-0 flex flex-col min-h-screen border-l border-white/10">
+    <div className="bg-[#1a1a1a] text-white w-[360px] flex-shrink-0 flex flex-col min-h-screen border-l border-white/10">
       {/* Profile Image Area */}
       <div className="p-6 flex flex-col items-center justify-center">
         <div className="w-48 h-48 bg-gray-800 rounded-lg mb-4 overflow-hidden border-4 border-[#4ade80] shadow-[0_0_20px_rgba(74,222,128,0.3)] relative">

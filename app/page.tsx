@@ -34,6 +34,7 @@ const TechBadge = memo(({ skill, index }: { skill: string, index: number }) => {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: index * 0.05, type: "spring", stiffness: 300, damping: 20 }}
             className="flex flex-col items-center gap-3 group cursor-pointer"
+            title={skill}
         >
             <div className="p-4 rounded-2xl bg-[#1a1a1a] border border-white/10 group-hover:border-[#4ade80] group-hover:scale-125 group-hover:rotate-6 transition-all duration-300 ease-out">
                 <Icon size={40} className="text-gray-400 group-hover:text-[#4ade80] transition-colors duration-300" />
@@ -94,18 +95,16 @@ export default function Home() {
             </Link>
         </div>
         
-        {/* Right Side: Book a Free Call (Desktop) & Hamburger (Mobile) */}
-        <div className="flex items-center gap-4">
-            <a 
-                href="https://calendly.com/mdrahinzaman21/30min" 
-                target="_blank" 
-                rel="noopener noreferrer"
+        {/* Right Side: Resume (Desktop) & Hamburger (Mobile) */}
+        <div className="flex items-center gap-6">
+            <Link 
+                href="/resume" 
                 className="hidden sm:block"
             >
                 <Button className="rounded-full bg-white text-black hover:bg-gray-200 transition-colors font-bold">
-                    Book a Free Call
+                    Resume
                 </Button>
-            </a>
+            </Link>
 
             {/* Hamburger Menu (Visible on all screens) */}
             <Button 
@@ -189,7 +188,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center px-4 sm:px-8 md:px-16 lg:px-24 pt-20 pb-24 relative overflow-hidden">
         {/* Background Gradient/Glow */}
-        <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#4ade80] opacity-20 blur-[120px] rounded-full pointer-events-none" />
+        <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#4ade80] opacity-10 blur-[100px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
           
@@ -337,11 +336,11 @@ export default function Home() {
                         className="relative pl-0 md:pl-16 group"
                     >
                         {/* Dot on Line */}
-                        <div className="absolute left-[14px] top-2 w-3 h-3 bg-[#4ade80] rounded-full z-10 hidden md:block shadow-[0_0_10px_#4ade80] group-hover:scale-125 transition-transform duration-300"></div>
+                        <div className="absolute left-[14px] top-2 w-3 h-3 bg-[#4ade80] rounded-full z-10 hidden md:block shadow-[0_0_5px_#4ade80] group-hover:scale-125 transition-transform duration-300"></div>
 
                         <div className="bg-[#1a1a1a] p-8 rounded-2xl border border-white/10 group-hover:border-[#4ade80]/50 transition-colors duration-300 relative overflow-hidden">
                             {/* Hover Glow */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-[#4ade80]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#4ade80]/5 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
 
                             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-2">
                                 <div>
@@ -353,9 +352,9 @@ export default function Home() {
                                 </span>
                             </div>
                             
-                            {job.description && (
+                            {/* {job.description && (
                                 <p className="text-gray-400 text-sm leading-relaxed mb-4">{job.description}</p>
-                            )}
+                            )} */}
 
                             {job.points && (
                                 <ul className="space-y-2">
@@ -364,7 +363,7 @@ export default function Home() {
                                             <span className="text-[#4ade80] mt-1">▹</span>
                                             <span dangerouslySetInnerHTML={{ 
                                                 __html: point.replace(
-                                                    /(React\.js|Next\.js|TypeScript|Electron\.js|Firebase|Node\.js|Express\.js|PostgreSQL|MongoDB|TailwindCSS)/g, 
+                                                    /(React\.js|Next\.js|TypeScript|Electron\.js|Firebase|Node\.js|Express\.js|PostgreSQL|MongoDB|TailwindCSS|ejs)/g, 
                                                     '<span class="text-white font-semibold">$1</span>'
                                                 ) 
                                             }} />

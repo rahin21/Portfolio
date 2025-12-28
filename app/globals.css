@@ -193,3 +193,40 @@ body::-webkit-scrollbar-thumb:hover,
   from { transform: translateY(0px); }
   to { transform: translateY(-2000px); }
 }
+
+@media print {
+  @page {
+    size: auto;
+    margin: 0;
+  }
+
+  body {
+    background-color: white !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Reset all transforms and scalers */
+  div[style*="transform"], 
+  div[style*="scale"] {
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+  }
+
+  /* Hide scrollbars and controls */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Ensure resume content is visible and formatted for A4/Letter */
+  .min-h-screen {
+    min-height: auto !important;
+    height: auto !important;
+    display: block !important;
+  }
+}
